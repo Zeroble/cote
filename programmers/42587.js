@@ -1,23 +1,21 @@
 function solution(priorities, location) {
-	let cnt = 0;
+	let order = 0;
+	priorities_inorder = [...priorities].sort().reverse()
 
 	while (true) {
-		let max = Math.max(...priorities)
-		while (true) {
-			let item = priorities.shift()
+		let item = priorities.shift()
 
-			// 만약 우선순위가 제일 높다면 실행함
-			if (item == max) {
-				if (location == 0)
-					return cnt + 1;
-				else
-					cnt += 1;
-			} else { // 아니라면 큐에 재추가 
-				priorities.push(item)
-			}
-
-			location = location == 0 ? priorities.length - 1 : location - 1
+		// 만약 우선순위가 제일 높다면 실행함
+		if (item == priorities_inorder[0]) {
+			order += 1
+			if (location == 0)
+				return order;
+			priorities_inorder.shift()
+		} else { // 아니라면 큐에 재추가 
+			priorities.push(item)
 		}
+
+		location = location == 0 ? priorities.length - 1 : location - 1
 	}
 }
 
