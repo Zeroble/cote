@@ -1,20 +1,24 @@
 function solution(storage, requests) {
+	initData()
 	for (request of requests) {
 		if (request.length === 1)
 			useJiggaeCar(storage, requests)
 		else
-			useCrane(storage, requests)
+			useCrane(storage, request[0])
 
 	}
 	return storage;
 }
 
+function initData(storage) {
+	// 물품들 주위를 물 (1)로 감쌈
+
+	storage = [[], [...storage], []]
+}
+
 function useCrane(storage, target) {
 	for (let i = 0; i < storage.length; i++) {
-		for (let j = 0; j < storage[i].length; j++) {
-			if (storage[i][j] == target)
-				storage[i][j] = " "
-		}
+		storage[i] = storage[i].replaceAll(target, "0")
 	}
 }
 
