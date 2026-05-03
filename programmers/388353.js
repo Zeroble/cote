@@ -13,7 +13,7 @@ function solution(storage, requests) {
 	let cnt = 0
 	for (let i = 0; i < storage.length; i++) {
 		console.log(storage[i].join(" "))
-		for (let j = 0; j < storage.length; j++)
+		for (let j = 0; j < storage[i].length; j++)
 			if (storage[i][j] !== '1' && storage[i][j] !== '0')
 				cnt += 1;
 	}
